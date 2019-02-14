@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>Определить знак зодиака</title>
+</head>
+<body>
+
+	<div class="container header">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1>Определение знака зодиака</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="container input">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h3>Введите дату рождения:</h3>
+
+				<div class="text-center">
+					<form id="form">
+						<input id="day" class="form-control" type="number" placeholder="Введите день">
+						<input id="month" class="form-control" list="month-list" placeholder="Выберете месяц">
+							<datalist id="month-list"> </option>
+							 <option value="1">Январь </option>
+							 <option value="2">Февраль </option>
+							 <option value="3">Март </option>
+							 <option value="4">Апрель </option>
+							 <option value="5">Май </option>
+							 <option value="6">Июнь </option>
+							 <option value="7">Июль </option>
+							 <option value="8">Август </option>
+							 <option value="9">Сентябрь </option>
+							 <option value="10">Октябрь </option>
+							 <option value="11">Ноябрь </option>
+							 <option value="12">Декабрь </option>
+							</datalist>
+						<button>Определить</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container output">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h3>Результат:</h3>
+				<div id="output"></div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+
+	document.getElementById('form').addEventListener('submit', function(e){
+		event.preventDefault();
+		let month = document.getElementById('month').value;
+		let day = document.getElementById('day').value;
+		
+
+		let Sign = getSign(day, month);
+
+		document.getElementById('output').innerHTML ="Вы - " + Sign;
+	});
+
+
+
+function getSign(day, month) {
+
+  var zodiacSigns = {
+    'capricorn':'Козерог',
+    'aquarius':'Водолей',
+    'pisces':'Рыбы',
+    'aries':'Овен',
+    'taurus':'Телец',
+    'gemini':'Близнецы',
+    'cancer':'Рак',
+    'leo':'Лев',
+    'virgo':'Девы',
+    'libra':'Весы',
+    'scorpio':'Скорпион',
+    'sagittarius':'Стрелец'
+  }
+ //проверка корректности ввода
+	if  (month <= 0 ){
+		alert('Введите месяц!');
+	} else if (day <=0 || day > 31){
+		alert('Введите корректное число!');
+	}//определение знака
+ else if((month == 1 && day <= 20) || (month == 12 && day >=22)) {
+    return zodiacSigns.capricorn;
+  } else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+    return zodiacSigns.aquarius;
+  } else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+    return zodiacSigns.pisces;
+  } else if((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+    return zodiacSigns.aries;
+  } else if((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+    return zodiacSigns.taurus;
+  } else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+    return zodiacSigns.gemini;
+  } else if((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+    return zodiacSigns.cancer;
+  } else if((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+    return zodiacSigns.leo;
+  } else if((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+    return zodiacSigns.virgo;
+  } else if((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+    return zodiacSigns.libra;
+  } else if((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+    return zodiacSigns.scorpio;
+  } else if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+    return zodiacSigns.sagittarius;
+  }
+}
+
+
+	</script>
+
+</body>
+</html>

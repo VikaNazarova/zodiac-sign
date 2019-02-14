@@ -1,0 +1,22 @@
+body{
+	background-color: #00353f;
+}
+.header{
+	background-color: #08c5d1;
+	margin-bottom: 50px;
+}
+.input{
+	background-color: #ffbf66;
+	margin-bottom: 10px;
+	padding: 40px;
+}
+input{
+	margin-bottom: 20px;
+}
+.output{
+	background-color: #d46f4d;
+	padding: 40px;
+}
+#output{
+	font-size: 40px;
+}
